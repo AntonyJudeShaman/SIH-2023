@@ -1,3 +1,292 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.ui-btn {
+    --btn-default-bg: #010314;
+    --btn-padding: 15px 20px;
+    --btn-hover-bg: rgb(51, 51, 51);
+    --btn-transition: .3s;
+    --btn-letter-spacing: .1rem;
+    --btn-animation-duration: 1.2s;
+    --btn-shadow-color: rgba(0, 0, 0, 0.137);
+    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+    --hover-btn-color: #7241FF;
+    --default-btn-color: #fff;
+    --font-size: 16px;
+    /* 👆 this field should not be empty */
+    --font-weight: 600;
+    --font-family: Menlo,Roboto Mono,monospace;
+  }
+  
+  /* button settings 👆 */
+  
+  .ui-btn {
+    box-sizing: border-box;
+    padding: var(--btn-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--default-btn-color);
+    font: var(--font-weight) var(--font-size) var(--font-family);
+    background: var(--btn-default-bg);
+    cursor: pointer;
+    transition: var(--btn-transition);
+    overflow: hidden;
+    box-shadow: var(--btn-shadow);
+    border-radius: 10px;
+    border: 2px solid #13b1af;
+  }
+  
+  .ui-btn span {
+    letter-spacing: var(--btn-letter-spacing);
+    transition: var(--btn-transition);
+    box-sizing: border-box;
+    position: relative;
+    background: inherit;
+  }
+  
+  .ui-btn span::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    background: inherit;
+  }
+  
+  .ui-btn:hover, .ui-btn:focus {
+    background: var(--btn-default-bg);
+    box-shadow: 0px 0px 10px 0px rgba(119, 68, 255, 0.70);
+    border: 2px solid #7241FF;
+    ;
+  }
+  
+  .ui-btn:hover span, .ui-btn:focus span {
+    color: var(--hover-btn-color);
+  }
+  
+  .ui-btn:hover span::before, .ui-btn:focus span::before {
+    animation: chitchat linear both var(--btn-animation-duration);
+  }
+  
+  
+  /* Add this CSS to your stylesheet or component */
+
+/* Base styles for the locate button */
+.locate-btn {
+    /* You can keep the existing styles here */
+  }
+  
+  /* Apply the chitchat animation to the button text */
+  .locate-btn .link-text::before {
+    animation: chitchat linear both var(--btn-animation-duration);
+  }
+  
+  /* Rest of your button styles */
+  
+  /* Keyframes for the chitchat animation */
+  @keyframes chitchat {
+    0% {
+      content: "#";
+    }
+  
+    5% {
+      content: ".";
+    }
+  
+    10% {
+      content: "^{";
+    }
+  
+    15% {
+      content: "-!";
+    }
+  
+    20% {
+      content: "#$_";
+    }
+  
+    25% {
+      content: "№:0";
+    }
+  
+    30% {
+      content: "#{+.";
+    }
+  
+    35% {
+      content: "@}-?";
+    }
+  
+    40% {
+      content: "?{4@%";
+    }
+  
+    45% {
+      content: "=.,^!";
+    }
+  
+    50% {
+      content: "?2@%";
+    }
+  
+    55% {
+      content: "\;1}]";
+    }
+  
+    60% {
+      content: "?{%:%";
+      right: 0;
+    }
+  
+    65% {
+      content: "|{f[4";
+      right: 0;
+    }
+  
+    70% {
+      content: "{4%0%";
+      right: 0;
+    }
+  
+    75% {
+      content: "'1_0<";
+      right: 0;
+    }
+  
+    80% {
+      content: "{0%";
+      right: 0;
+    }
+  
+    85% {
+      content: "]>'";
+      right: 0;
+    }
+  
+    90% {
+      content: "4";
+      right: 0;
+    }
+  
+    95% {
+      content: "2";
+      right: 0;
+    }
+  
+    100% {
+      content: "";
+      right: 0;
+    }
+  }
+    
+  .button {
+    --color: #00A97F;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-size: 17px;
+    border: 3px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+   }
+   
+   .button::before, .button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border: 3px solid;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+   }
+   
+   .button::before {
+    top: -1em;
+    left: -1em;
+   }
+   
+   .button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+   }
+   
+   .button:hover::before, .button:hover::after {
+    height: 410px;
+    width: 410px;
+   }
+   
+   .button:hover {
+    color: rgb(201, 208, 210);
+   }
+   
+   .button:active {
+    filter: brightness(.8);
+   }
+   
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+  
+  /* Style the search box */
+  .rsb-container {
+    width: 300px; /* Set your desired width */
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  
+  /* Style the input field */
+  .rsb-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  /* Style the search results container */
+  .rsb-suggestion-container {
+    position: absolute;
+    background-color: #008822;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 150px; /* Set a maximum height for the results container */
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style each search result item */
+  .rsb-suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  /* Highlight the selected item */
+  .rsb-suggestion-item.active {
+    background-color: #005b62;
+  }
+  
+  /* Style the search icon */
+  .rsb-icon {
+    fill: #018d1a;
+  }
+  
+  /* Style the placeholder text */
+  .rsb-placeholder {
+    color: #02775e;
+  }
+  

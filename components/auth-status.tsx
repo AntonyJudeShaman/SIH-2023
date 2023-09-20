@@ -7,6 +7,7 @@ export default async function AuthStatus() {
       {session && (
         <p className="text-stone-200 text-sm">
           Signed in as {session.user?.email}
+          
         </p>
       )}
     </div>
