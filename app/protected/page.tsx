@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import ReactSearchBox from "react-search-box";
 import SignOut from "@/components/sign-out";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default class App extends Component {
   data = [
@@ -91,7 +93,9 @@ export default class App extends Component {
   render() {
     return (
       <div data-theme="">
-        
+        <Link href="/">
+      <ArrowLeft className="absolute left-8 top-8 text-white hover:text-green-300 w-8 h-8" />
+      </Link>
       <div className="h-full w-1/2 mx-auto d-block" style={{marginTop:'10%'}} >
         
         <h1>Search for Mobile Models</h1>
@@ -109,6 +113,7 @@ export default class App extends Component {
           callback={(record) => console.log(record)}
         />
       </div>
+      <SignOut/>
       </div>
     );
   }

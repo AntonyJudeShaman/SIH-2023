@@ -9,7 +9,7 @@ export default function Login() {
     <>
       <div className="flex h-screen w-screen items-center justify-center bg-purple-50">
         <Link href="/">
-      <ArrowLeft className="absolute left-8 top-8 text-black w-6 h-6" />
+      <ArrowLeft className="absolute left-8 top-8 text-black w-8 h-8" />
       </Link>
         <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-green-100 shadow-xl">
           <div className="relative flex flex-col items-center justify-center space-y-3 border-b border-green-200 bg-green-200 px-4 py-6 pt-8 text-center sm:px-16">
@@ -33,6 +33,7 @@ export default function Login() {
             
           </div>
           <Form type="login" />
+          
         </div>
       </div>
     </>

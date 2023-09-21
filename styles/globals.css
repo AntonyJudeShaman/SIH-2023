@@ -35,7 +35,7 @@
     transition: var(--btn-transition);
     overflow: hidden;
     box-shadow: var(--btn-shadow);
-    border-radius: 10px;
+    border-radius: 15px;
     border: 2px solid #13b1af;
   }
   
@@ -184,7 +184,7 @@
     --color: #00A97F;
     padding: 0.8em 1.7em;
     background-color: transparent;
-    border-radius: .3em;
+    border-radius: 1.5em;
     position: absolute;
     overflow: hidden;
     cursor: pointer;
@@ -290,3 +290,18 @@
     color: #02775e;
   }
   
+
+  .horizontal-line {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.line {
+    flex-grow: 1;
+    border-top: 2px solid #000000;
+}
+
+.or-text {
+    margin: 0 10px;
+}

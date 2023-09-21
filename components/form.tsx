@@ -1,14 +1,16 @@
 "use client";
-
-import { useState } from "react";
+import * as React from "react";
 import { signIn } from "next-auth/react";
 import LoadingDots from "@/components/loading-dots";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Icons } from "./icons";
 
 export default function Form({ type }: { type: "login" | "register" }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isGoogleLoading, setisGoogleLoading] = React.useState<boolean>(false);
   const router = useRouter();
 
   return (
@@ -71,7 +73,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           placeholder="example@gmail.com"
           autoComplete="email"
           required
-          className="mt-1 block w-full text-black bg-white appearance-none rounded-md border border-green-300 px-3 py-2 placeholder-gray-900 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+          className="mt-1 block w-full text-black bg-white appearance-none rounded-md border border-green-300 px-3 py-2 placeholder-gray-500 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
       <div>
@@ -87,7 +89,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           type="password"
           placeholder="*****"
           required
-          className="mt-1 bg-white text-black block w-full appearance-none rounded-md border border-green-300 px-3 py-2 placeholder-gray-900 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+          className="mt-1 bg-white text-black block w-full appearance-none rounded-md border border-green-300 px-3 py-2 placeholder-gray-500 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
       <button
@@ -101,7 +103,9 @@ export default function Form({ type }: { type: "login" | "register" }) {
         {loading ? (
           <LoadingDots color="#00FF00" />
         ) : (
-          <p className="font-bold">{type === "login" ? "Sign In" : "Sign Up"}</p>
+          <p className="font-bold">
+            {type === "login" ? "Sign In" : "Sign Up"}
+          </p>
         )}
       </button>
       {type === "login" ? (
@@ -121,6 +125,30 @@ export default function Form({ type }: { type: "login" | "register" }) {
           instead.
         </p>
       )}
+      <div className="">
+        <div className="horizontal-line">
+        <div className="line"></div>
+        <span className="or-text font-semibold text-green-600">OR </span>
+        <div className="line"></div>
+      </div>
+      </div>
+
+      <button
+        type="button"
+        className="mt-1 bg-white w-full rounded-xl mx-auto d-block text-center align-center justify-center hover:bg-gray-200 font-semibold text-black p-3 w-100 border border-gray-400 hover:bg-accent hover:text-accent-foreground shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm flex items-center"
+        onClick={() => {
+          setisGoogleLoading(true);
+          signIn("google");
+        }}
+        disabled={isLoading || isGoogleLoading}
+      >
+        {isGoogleLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.google className="mr-2" />
+        )}
+        Google
+      </button>
     </form>
   );
 }
