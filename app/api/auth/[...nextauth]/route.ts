@@ -7,8 +7,8 @@ import { compare } from "bcrypt";
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID, 
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
+      clientId: process.env.GOOGLE_CLIENT_ID || '', 
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'atr5-gt65-9jet', 
     }),
     CredentialsProvider({
       credentials: {
@@ -28,6 +28,7 @@ export const authOptions: NextAuthOptions = {
         // if user doesn't exist or password doesn't match
         if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
+          
         }
         return user;
       },
