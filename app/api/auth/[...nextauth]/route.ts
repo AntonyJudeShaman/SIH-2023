@@ -5,10 +5,11 @@ import prisma from "@/lib/prisma";
 import { compare } from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
+  secret: "PLACE-HERE-ANY-STRING", // Your secret should be here at the top level
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || '', 
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'atr5-gt65-9jet', 
+      clientId: process.env.GOOGLE_CLIENT_ID, 
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
     }),
     CredentialsProvider({
       credentials: {
@@ -28,7 +29,6 @@ export const authOptions: NextAuthOptions = {
         // if user doesn't exist or password doesn't match
         if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
-          
         }
         return user;
       },
