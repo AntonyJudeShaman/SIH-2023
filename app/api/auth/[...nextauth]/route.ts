@@ -5,11 +5,11 @@ import prisma from "@/lib/prisma";
 import { compare } from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
-  secret: "PLACE-HERE-ANY-STRING", // Your secret should be here at the top level
+
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID, 
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
+      clientId: process.env.GOOGLE_CLIENT_ID! as string, 
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET! as string, 
     }),
     CredentialsProvider({
       credentials: {
@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
         if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
         }
-        return user;
+        return user || null;
       },
     }),
   ],
@@ -38,4 +38,6 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+export const GET = handler;
+export const POST = handler;
+
